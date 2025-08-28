@@ -1,1 +1,21 @@
-# restaurant-website
+# Restaurant Website
+Bu web sitesi, kullanıcı dostu tasarımı ve modern arayüzü ile restoran deneyimini dijital ortama taşıyor. Ziyaretçiler menüyü görüntüleyebilir, tarih ve saat seçerek rezervasyon yapabilir, iletişim formu aracılığıyla öneri, şikayet veya taleplerini iletebilir. Ayrıca hızlı erişim butonları sayesinde sayfalar arasında kolayca geçiş yapılabilir ve restoranın konumu harita üzerinde gösterilir. Site, mobil cihazlarla uyumlu ve tüm cihazlarda sorunsuz bir deneyim sunacak şekilde geliştirilmiştir.
+
+![1](https://github.com/user-attachments/assets/46516412-feee-4ddb-b377-788383e9b62e)
+![2](https://github.com/user-attachments/assets/531422d3-c1e1-498a-b026-4a9f7c81f4ce)
+![3](https://github.com/user-attachments/assets/c5f9dfe1-bece-4f4a-a824-fdd265badde5)
+![4](https://github.com/user-attachments/assets/a79645a2-1b06-4c43-9e23-5393b3e45180)
+![5](https://github.com/user-attachments/assets/1d6989af-215e-4052-afd4-1ca1c440ff0d)
+![6](https://github.com/user-attachments/assets/53231316-1476-4fc2-bba9-5a8bd80d3020)
+![7](https://github.com/user-attachments/assets/73351c0d-23c7-4b9d-a85f-6ea1275aa8c6)
+![8](https://github.com/user-attachments/assets/1d22af80-a593-42ed-856d-36308c50906d)
+![9](https://github.com/user-attachments/assets/e5ec89c4-eb26-4c6e-bdde-078f2c208422)
+![10](https://github.com/user-attachments/assets/f940213c-96c4-435a-ace6-739e0a2b49c4)
+![11](https://github.com/user-attachments/assets/457f3177-9e61-477c-9fab-e6cd9126ab51)
+![12](https://github.com/user-attachments/assets/72342fcd-2c31-4af6-b3a3-4fea6a909f4e)
+![13](https://github.com/user-attachments/assets/10bc58a1-dc65-424b-ad3c-f784d46de880)
+![14](https://github.com/user-attachments/assets/9084a365-4124-40e1-b9ea-5e00ec5d5fde)
+![15](https://github.com/user-attachments/assets/106dbe23-5f8d-4983-ba5b-1426286b9e3a)
+![16](https://github.com/user-attachments/assets/d4230311-1c08-4152-bf56-f4f6425a2943)
+![17](https://github.com/user-attachments/assets/e5e29ece-cd5a-416f-82b2-a9c15ba01e64)
+![18](https://github.com/user-attachments/assets/d6712fe9-1233-4f42-b387-6ebab3c4f10f)
