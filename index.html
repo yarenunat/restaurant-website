@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anasayfa </title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <link rel="icon" href="./assets/images/1991.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="preload" as="image" href="./assets/images/zke6f6vyd7ib1.jpg">
+</head>
+
+<body>
+
+  <!-- özel -->
+  <main>
+
+    <!-- preload -->
+    <div class="preload" data-preaload>
+      <div class="circle"></div>
+      <p class="text"></p>
+    </div>
+
+    <!-- header -->
+    <header class="header" data-header>
+      <div class="gradient-overlay"></div>
+      <!-- navbar -->
+      <nav class="navbar">
+        <div class="container">
+          <a href="index.html" class="logo">
+            <img src="./assets/images/-logo.png" alt="Logo">
+          </a>
+          <ul class="nav-links">
+            <li><a href="about.html">Hakkımızda</a></li>
+            <li><a href="menu.html">Menü</a></li>
+            <li><a href="index.html">Anasayfa</a></li>
+            <li><a href="reservation.html">Rezervasyon</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+        <a href="#" class="logo">
+          <img src="./assets/images/-logo.png" width="260px" height="50px" alt=" - Anasayfa">
+        </a>
+
+        <nav class="navbar" data-navbar>
+          <button class="close-btn" aria-label="close menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <a href="#" class="logo">
+            <img src="./assets/images/-logo.png" width="160px" height="50px" alt=" - Anasayfa">
+          </a>
+
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <a href="about.html" class="navbar-link hover-underline">
+                <div class="separator"></div>
+                <span class="span">Hakkımızda</span>
+              </a>
+            </li>
+            <li class="navbar-item">
+              <a href="menu.html" class="navbar-link hover-underline">
+                <div class="separator"></div>
+                <span class="span">MENÜ</span>
+              </a>
+            </li>
+            <li class="navbar-item">
+              <a href="index.html" class="navbar-link hover-underline active">
+                <div class="separator"></div>
+                <span class="span">Anasayfa</span>
+              </a>
+            </li>
+            <li class="navbar-item">
+              <a href="reservation.html" class="navbar-link hover-underline">
+                <div class="separator"></div>
+                <span class="span">Rezervasyon</span>
+              </a>
+            </li>
+            <li class="navbar-item">
+              <a href="contact.html" class="navbar-link hover-underline">
+                <div class="separator"></div>
+                <span class="span">İLETİŞİM</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="arama-kutusu">
+          <style>
+             .header .navbar-list {
+              margin-left: 10%;
+            }
+            @media (max-width: 768px) {
+              /* Tablet ve altı için */
+
+              .arama-kutusu {
+                max-width: 100px;
+                /* Mobil için arama kutusunun maksimum genişliğini azalt */
+                min-width: 70px;
+                /* Çok fazla küçülmesini engelle */
+                margin-right: 5px;
+                /* Keşfet butonu ile arasına boşluk bırak */
+                /* Eğer mobil menü açıksa gizlenmesi gerekiyorsa */
+                /* display: none; */
+              }
+
+              .arama-kutusu input {
+                padding: 8px 5px;
+                /* Mobil için input padding'ini azalt */
+                font-size: 14px;
+                /* Mobil için font boyutunu küçült */
+              }
+
+              /* Eğer "Ara" yazısının yerine sadece bir ikon görünmesi isteniyorsa */
+              .arama-kutusu input::placeholder {
+                /* content: "\f002"; /* Font Awesome arama ikonu örneği, ikon kütüphanesi yüklü olmalı */
+                /* font-family: "Font Awesome 5 Free"; /* Font Awesome kullanılıyorsa */
+                /* font-weight: 900; */
+                /* text-indent: -9999px; /* Metni gizle */
+                color: #e4c590;
+                text-align: center;
+                /* Placeholder'ı ortala */
+              }
+            }
+
+            /* Küçük mobil cihazlar için daha da küçük ayarlar */
+            @media (max-width: 480px) {
+              .arama-kutusu {
+                max-width: 80px;
+                /* Daha küçük ekranlar için */
+                min-width: 60px;
+              }
+
+              .arama-kutusu input {
+                padding: 6px 3px;
+                font-size: 12px;
+              }
+            }
+
+
+
+            .arama-kutusu {
+              margin-top: -0.7%;
+              position: relative;
+              display: inline-block;
+            }
+
+            .arama-kutusu input {
+              color: #e4c590;
+              background-color: #00000048;
+              border: 2px solid #e4c590;
+              padding: 12px 6px;
+              border-radius: 0px;
+            }
+
+            .sonuclar-listesi {
+              position: absolute;
+              background: black;
+              border: 1px solid #E4C590FF;
+              border-top: none;
+              max-height: 200px;
+              overflow-y: auto;
+              width: 100%;
+              z-index: 999;
+              display: none;
+              list-style: none;
+              padding: 0;
+              margin: 0;
+            }
+
+            .sonuclar-listesi li {
+              padding: 8px;
+              cursor: pointer;
+            }
+
+            .sonuclar-listesi li:hover {
+              background-color: #e4c590;
+            }
+          </style>
+          <input type="text" id="aramaInput" placeholder="  Ara..." onkeyup="canliAramaYap()" />
+          <ul id="aramaSonuclari" class="sonuclar-listesi"></ul>
+        </div>
+
+        <a href="kesfet.html" class="btn btn-secondary">
+          <span class="text text-1">Keşfet</span>
+          <span class="text text-2" aria-hidden="true">Tıkla</span>
+        </a>
+        <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+          <span class="line line-1"></span>
+          <span class="line line-2"></span>
+          <span class="line line-3"></span>
+        </button>
+
+        <div class="overlay" data-nav-toggler data-overlay></div>
+      </div>
+    </header>
+    <article>
+      <section class="hero text-center" aria-label="home" id="home">
+
+        <div class="slider-bg">
+          <img src="./assets/images/zke6f6vyd7ib1.jpg" width="1920" height="1080" alt="" class="img-cover">
+        </div>
+
+        <p class="label-2 section-subtitle">1991'den beri</p>
+
+        <h1 class="display-1 hero-title">
+          ERZURUMDAN<br>
+          ÇIKTIK YOLA..
+        </h1>
+
+        <p class="body-2 hero-text">
+          Sıcacık bir ortamda, lezzet dolu anlar için...
+        </p>
+
+        <a href="el-menusu.html" class="btn btn-primary" id="menuBtn">
+          <span class="text text-1">El Menüsüne Göz At</span>
+          <span class="text text-2" aria-hidden="true">Tıkla</span>
+        </a>
+
+        <a href="reservation.html" class="hero-btn has-after baklava-btn">
+          <img src="./assets/images/hero-icon.png" width="48" height="48" alt="booking icon">
+          <span class="label-2 text-center span">Rezervasyon</span>
+        </a>
+      </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <style>
+      .footer {
+        background-color: #1a1a1a;
+        color: #fff;
+        padding: 50px 0 20px;
+        font-size: 13px;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .footer-logo {
+        margin-bottom: 20px;
+      }
+
+      .footer-logo img {
+        width: 160px;
+        height: auto;
+        filter: brightness(0) invert(1);
+      }
+
+      .footer-title {
+        color: #cea63ac2;
+        font-size: 15px;
+        margin-bottom: 20px;
+        font-weight: 500;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 12px;
+      }
+
+      .footer-links a {
+        color: #ddd;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #c9a74d;
+        padding-left: 5px;
+      }
+
+      .social-media {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+        background-color: #c9a74d;
+        transform: translateY(-3px);
+      }
+
+      .social-icon img {
+        width: 20px;
+        height: 20px;
+        filter: brightness(0) invert(1);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #333;
+        padding-top: 20px;
+        text-align: center;
+        color: #999;
+        font-size: 13px;
+      }
+
+      @media (max-width: 768px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <img src="./assets/images/-logo.png" alt="">
+          </div>
+          <p style="color: #999; line-height: 1.6;">1991'den beri.</p>
+          <div class="social-media">
+            <a href="https://www.yemeksepeti.com/restaurant/m3am/img" class="social-icon"
+              target="_blank">
+              <img src="assets/images/yemeksepeti.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/cagkebap/" class="social-icon" target="_blank">
+              <img src="assets/images/instagram (1).png" alt="Instagram">
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">Hızlı Linkler</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Anasayfa</a></li>
+            <li><a href="about.html">Hakkımızda</a></li>
+            <li><a href="menu.html">Menü</a></li>
+            <li><a href="reservation.html">Rezervasyon</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">İletişim</h3>
+          <ul class="footer-links">
+            <li><a href="tel:+905555555555">0505 394 82 25</a></li>
+            <li><a href="mailto:info@.com">info@.com</a></li>
+            <li>Deneme Adres</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">Çalışma Saatleri</h3>
+          <ul class="footer-links">
+            <li>Pazartesi - Cuma<br>10:00 - 23:00</li>
+            <li>Cumartesi - Pazar<br>11:00 - 00:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 . Tüm hakları saklıdır. </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript Dosyaları -->
+  <script src="./assets/js/script.js"></script>
+  <script src="search.js"> </script>
+  <script src="speech.js"> </script>
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
+
