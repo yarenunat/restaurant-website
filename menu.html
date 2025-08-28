@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menü | </title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;700&family=Forum&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/images/1991.png" type="image/x-icon">
+
+    <style>
+        :root {
+            --primary: #c8a97e;
+            --dark-bg: #0f0f0f;
+            --dark-card: #1a1a1a;
+            --text-light: #e6e6e6;
+            --text-muted: #8c8c8c;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+        }
+
+        .menu-page {
+            padding: 100px 0 60px;
+        }
+
+        .menu-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 20px;
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .menu-header h1 {
+            font-size: 3.5rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            font-weight: 400;
+        }
+
+        .menu-header h1:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 2px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 20%;
+        }
+
+        .menu-header p {
+            color: var(--text-muted);
+            font-size: 2.5rem;
+            max-width: 700px;
+            margin: 20px auto 0;
+            line-height: 1.6;
+        }
+
+        .menu-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .category-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--text-light);
+            padding: 8px 22px;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .menu-section {
+            margin-bottom: 70px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-weight: 500;
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 2px;
+            background: var(--primary);
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-item {
+            background: var(--dark-card);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border-color: rgba(200, 169, 126, 0.2);
+        }
+
+        .menu-item-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .menu-item-img:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        }
+
+        .menu-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .menu-item:hover .menu-item-img img {
+            transform: scale(1.05);
+        }
+
+        .menu-item-content {
+            padding: 20px;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .menu-item-title {
+            font-size: 2rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .menu-item-price {
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: 550;
+        }
+
+        .menu-item-desc {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 1.3rem;
+            margin-bottom: 0;
+        }
+
+        /* Modal Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--dark-card);
+            border-radius: 12px;
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            overflow: hidden;
+            transform: scale(0.9);
+            transition: var(--transition);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-img {
+            width: 100%;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .modal-details {
+            width: 55%;
+            padding: 40px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-light);
+            font-size: 2rem;
+        }
+
+        .modal-close:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .modal-price {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 500;
+            display: block;
+        }
+
+        .modal-desc {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.4rem;
+        }
+
+        .modal-ingredients {
+            margin-bottom: 30px;
+        }
+
+        .modal-ingredients h4 {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .ingredients-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .ingredient-tag {
+            background: rgba(200, 169, 126, 0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 1.3rem;
+            border: 1px solid rgba(200, 169, 126, 0.3);
+        }
+
+        @media (max-width: 992px) {
+            .modal-content {
+                flex-direction: column;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .modal-img {
+                width: 100%;
+                height: 250px;
+                min-height: auto;
+            }
+
+            .modal-details {
+                width: 100%;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-header h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-details {
+                padding: 25px;
+            }
+
+            .modal-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+
+    <!-- Preload -->
+    <div class="preload" data-preaload>
+        <div class="circle"></div>
+        <p class="text"></p>
+    </div>
+
+    <!-- Header -->
+    <header class="header" data-header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="./assets/images/-logo.png" width="260" height="50" alt=" - Anasayfa">
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <button class="close-btn" aria-label="close menu" data-nav-toggler>
+                    <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+                </button>
+
+                <a href="index.html" class="logo">
+                    <img src="./assets/images/-logo.png" width="160" height="50" alt=" - Anasayfa">
+                </a>
+
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a href="about.html" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Hakkımızda</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="menu.html" class="navbar-link hover-underline active">
+                            <div class="separator"></div>
+                            <span class="span">Menü</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="index.html" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Anasayfa</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="reservation.html" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Rezervasyon</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="contact.html" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">İLETİŞİM</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <a href="kesfet.html" class="btn btn-secondary">
+                <span class="text text-1">Keşfet</span>
+                <span class="text text-2" aria-hidden="true">Tıkla</span>
+            </a>
+
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+                <span class="line line-3"></span>
+            </button>
+
+            <div class="overlay" data-nav-toggler data-overlay></div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="menu-page">
+        <div class="menu-container">
+
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="all">Tümü</button>
+                <button class="category-btn" data-category="kebap">Kebaplar</button>
+                <button class="category-btn" data-category="burger">Burgerler</button>
+                <button class="category-btn" data-category="tereyagli">Tereyağlılar</button>
+                <button class="category-btn" data-category="sis">Şişler</button>
+                <button class="category-btn" data-category="kofte">Köfteler</button>
+                <button class="category-btn" data-category="pide">Pideler</button>
+                <button class="category-btn" data-category="izgara">Izgaralar</button>
+                <button class="category-btn" data-category="corba">Çorbalar</button>
+                <button class="category-btn" data-category="tatli">Tatlılar</button>
+            </div>
+
+            <!-- Kebap Section -->
+            <div class="menu-section" id="kebap">
+                <h2 class="section-title">Kebaplar</h2>
+                <div class="menu-grid">
+                    <div class="menu-item" data-category="kebap" data-item='{
+                        "title": "Cağ Kebap",
+                        "price": "350₺",
+                        "desc": "Erzurum usulü yapılan, özel baharatlarla marine edilmiş kuzu etinden cağ kebabı. Geleneksel yöntemlerle hazırlanan bu lezzet, dikey şişlerde odun ateşinde pişirilir.",
+                        "img": "./assets/images/yemekler/cag2.jpeg",
+                        "ingredients": ["Kuzu eti", "Tuz", "Karabiber", "Kekik", "Pul biber", "Soğan"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/cag2.jpeg" alt="Cağ Kebap">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Cağ Kebap</h3>
+                                <span class="menu-item-price">350₺</span>
+                            </div>
+                            <p class="menu-item-desc">Erzurum usulü yapılan, özel baharatlarla marine edilmiş kuzu
+                                etinden cağ kebabı.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="kebap" data-item='{
+                        "title": "Adana Kebap",
+                        "price": "280₺",
+                        "desc": "Özel baharatlarla hazırlanan, ateşte yavaşça pişirilen geleneksel Adana kebabı. Kıymanın özel karışımı ve doğru pişirme tekniğiyle hazırlanır.",
+                        "img": "./assets/images/yemekler/adana-kebap.jpeg",
+                        "ingredients": ["Kıyma", "Kırmızı biber", "Karabiber", "Tuz", "Kuyruk yağı"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/adana-kebap.jpeg" alt="Adana Kebap">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Adana Kebap</h3>
+                                <span class="menu-item-price">280₺</span>
+                            </div>
+                            <p class="menu-item-desc">Özel baharatlarla hazırlanan, ateşte yavaşça pişirilen geleneksel
+                                Adana kebabı.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="kebap" data-item='{
+                        "title": "Urfa Kebap",
+                        "price": "280₺",
+                        "desc": "Acısız ama bol baharatlı, geleneksel Şanlıurfa usulü hazırlanan nefis kebap. Özel baharat karışımıyla yoğrulan kıyma, odun ateşinde yavaşça pişirilerek eşsiz bir lezzet sunar.",
+                        "img": "./assets/images/yemekler/adana.jpg",
+                        "ingredients": ["Kıyma", "Kırmızı biber", "Karabiber", "Tuz", "Kimyon", "Pul biber", "Soğan"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/adana.jpg" alt="Urfa Kebap">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Urfa Kebap</h3>
+                                <span class="menu-item-price">280₺</span>
+                            </div>
+                            <p class="menu-item-desc">Özel baharatlarla hazırlanan, odun ateşinde yavaşça pişirilen
+                                geleneksel Şanlıurfa usulü kebap.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="kebap" data-item='{
+                        "title": "Patlıcan Kebap",
+                        "price": "300₺",
+                        "desc": "Közlenmiş patlıcan ve özel baharatlı kıymadan yapılan nefis patlıcan kebabı. Patlıcanların tazeliği ve etin kalitesiyle öne çıkan bir lezzet.",
+                        "img": "./assets/images/yemekler/patlican-kebap.jpeg",
+                        "ingredients": ["Kıyma", "Patlıcan", "Domates", "Biber", "Sarımsak", "Baharatlar"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/patlican-kebap.jpeg" alt="Patlıcan Kebap">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Patlıcan Kebap</h3>
+                                <span class="menu-item-price">300₺</span>
+                            </div>
+                            <p class="menu-item-desc">Közlenmiş patlıcan ve özel baharatlı kıymadan yapılan nefis
+                                patlıcan kebabı.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="kebap" data-item='{
+                        "title": "Domatesli Kebap",
+                        "price": "300₺",
+                        "desc": "Taze domateslerin doğal tatlılığı ile kuzu etinin lezzetli uyumunun buluştuğu bu özel kebap, yaz mutfağının en sevilen lezzetlerindendir. Domateslerin odun ateşinde hafifçe yumuşatılmasıyla ortaya çıkan nefis sos, etin her dilimine işleyerek eşsiz bir tat deneyimi sunar.",
+    "img": "./assets/images/yemekler/domatesli-kebap.jpeg",
+    "ingredients": ["Kuzu eti", "Taze domates", "Biber", "Sarımsak", "Zeytinyağı", "Tuz", "Karabiber", "Kekik", "Pul biber"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/domates-kebap.jpeg" alt="Domatesli Kebap">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Domatesli Kebap</h3>
+                                <span class="menu-item-price">300₺</span>
+                            </div>
+                            <p class="menu-item-desc">Taze domates ve kuzu etiyle hazırlanan kebap. Domateslerin
+                                lezzetiyle marine edilen et, odun ateşinde pişirilir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Burger Section -->
+            <div class="menu-section" id="burger">
+                <h2 class="section-title">Burgerler</h2>
+                <div class="menu-grid">
+                    <div class="menu-item" data-category="burger" data-item='{
+                        "title": "Hamburger",
+                        "price": "250₺",
+                        "desc": "Özel köftesi ve taze malzemelerle hazırlanan klasik hamburger. 100% dana etinden yapılan köftesiyle unutulmaz bir lezzet sunar.",
+                        "img": "./assets/images/yemekler/hamburger.jpeg",
+                        "ingredients": ["Dana köfte", "Hamburger ekmeği", "Marul", "Domates", "Soğan", "Turşu", "Ketçap", "Mayonez"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/hamburger.jpeg" alt="İnegöl Köfte">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Hamburger</h3>
+                                <span class="menu-item-price">250₺</span>
+                            </div>
+                            <p class="menu-item-desc">Tamamen doğal malzemelerle hazırlanan hamburgerimiz, özenle
+                                seçilmiş dana etinden yapılmış sulu köftesi ve çıtır sebzeleriyle sizi bekliyor. Yanında
+                                patates kızartması ve içecek ile servis edilir.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="burger" data-item='{
+                        "title": "Cağ Burger",
+                        "price": "320₺",
+                        "desc": "Erzurumun geleneksel lezzeti cağ kebabı, şimdi burger sevenlerle buluşuyor! Özel marine edilmiş kuzu eti, sumaklı soğan ve köy domatesiyle hazırlanan bu benzersiz burger, Anadolunun lezzetini modern sunumla birleştiriyor.",
+                        "img": "./assets/images/yemekler/cag-burger.png",
+                        "ingredients": ["Cağ kebabı", "Burger ekmeği", "Marul", "Domates", "Soğan", "Sumaklı soğan", "Özel sos"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/cag-burger.png" alt="Pideli Köfte">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Cağ Burger</h3>
+                                <span class="menu-item-price">320₺</span>
+                            </div>
+                            <p class="menu-item-desc">Erzurum'un meşhur cağ kebabı ile hazırlanan özel burger.
+                                Geleneksel cağ kebabının lezzeti, burger formatında sunuluyor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- tereyag Section -->
+            <div class="menu-section" id="tereyagli">
+                <h2 class="section-title">Tereyağlılar</h2>
+                <div class="menu-grid">
+                    <div class="menu-item" data-category="tereyagli" data-item='{
+                        "title": "İskender Kebap",
+                        "price": "350₺",
+                        "desc": "Bursanın dünyaca ünlü lezzeti İskender Kebap, ustalıkla hazırlanmış kuzu döneri, özel domates sosu ve köpük köpük eritilmiş tereyağı ile sunuluyor. Yanında taze yoğurt ve sıcak pide eşliğinde unutulmaz bir tat sunuyor.",
+                        "img": "./assets/images/yemekler/iskender.jpeg",
+                        "ingredients": ["Kuzu döner", "Pide", "Domates sosu", "Tereyağı", "Yoğurt", "Kırmızı biber"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/iskender.jpeg" alt="İnegöl Köfte">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">İskender Kebap</h3>
+                                <span class="menu-item-price">350₺</span>
+                            </div>
+                            <p class="menu-item-desc">Bursa'nın meşhur İskender kebabı, ince dilimlenmiş döner ve özel
+                                sosuyla hazırlanır. Tereyağı ve domates sosu eşliğinde servis edilir.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="tereyagli" data-item='{
+                        "title": "Pideli Köfte",
+                        "price": "350₺",
+                        "desc": "Tereyağlı pideler üzerine servis edilen özel köftelerimiz. Köftelerimiz özel baharat karışımı ve kuzu-et dana karışımıyla hazırlanır.",
+                        "img": "./assets/images/yemekler/pideli-köfte.jpeg",
+                        "ingredients": ["Köfte", "Pide", "Tereyağ", "Yoğurt", "Domates sosu", "Sumak"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/pideli-köfte.jpeg" alt="Pideli Köfte">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Pideli Köfte</h3>
+                                <span class="menu-item-price">350₺</span>
+                            </div>
+                            <p class="menu-item-desc">Tereyağlı pideler üzerine servis edilen özel köftelerimiz.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Köfte Section -->
+            <div class="menu-section" id="kofte">
+                <h2 class="section-title">Köfteler</h2>
+                <div class="menu-grid">
+                    <div class="menu-item" data-category="kofte" data-item='{
+                        "title": "İnegöl Köfte",
+                        "price": "300₺",
+                        "desc": "İnegöl usulü hazırlanan, özel baharatlarla lezzetlendirilmiş nefis köftelerimiz. Geleneksel tarifle hazırlanan bu köfteler, ızgarada mükemmel şekilde pişirilir.",
+                        "img": "./assets/images/yemekler/inegol-kofte.jpeg",
+                        "ingredients": ["Kıyma", "Soğan", "Ekmek içi", "Yumurta", "Tuz", "Karabiber"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/inegol-kofte.jpeg" alt="İnegöl Köfte">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">İnegöl Köfte</h3>
+                                <span class="menu-item-price">300₺</span>
+                            </div>
+                            <p class="menu-item-desc">İnegöl usulü hazırlanan, özel baharatlarla lezzetlendirilmiş nefis
+                                köftelerimiz.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="kofte" data-item='{
+                        "title": "Kaşarlı Köfte",
+                        "price": "320₺",
+                        "desc": "Köftenin içine kaşar peyniri konularak ızgara edilen özel bir çeşit.",
+                        "img": "./assets/images/yemekler/köfte.jpeg",
+                        "ingredients": ["Kıyma", "Kaşar peyniri", "Soğan", "Yumurta", "Galeta unu", "Tuz", "Karabiber"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/köfte.jpeg" alt="Pideli Köfte">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Kaşarlı Köfte</h3>
+                                <span class="menu-item-price">320₺</span>
+                            </div>
+                            <p class="menu-item-desc">Izgara köftelerimizin içinde eriyen kaşar peyniri sizi bekliyor.
+                                Yanında patates püresi ve sosla servis edilir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pide Section -->
+            <div class="menu-section" id="pide">
+                <h2 class="section-title">Pideler</h2>
+                <div class="menu-grid">
+                    <div class="menu-item" data-category="pide" data-item='{
+                        "title": "Kıymalı Pide",
+                        "price": "200₺",
+                        "desc": "Özel karışımlı kıymamız ve ince açılmış hamurla hazırlanan nefis pide. Hamurumuz tam buğday unuyla elde açılır ve taş fırında pişirilir.",
+                        "img": "./assets/images/yemekler/kiymali-pide.jpeg",
+                        "ingredients": ["Kıyma", "Hamur", "Soğan", "Domates", "Biber", "Baharatlar"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/kiymali-pide.jpeg" alt="Kıymalı Pide">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Kıymalı Pide</h3>
+                                <span class="menu-item-price">200₺</span>
+                            </div>
+                            <p class="menu-item-desc">Özel karışımlı kıymamız ve ince açılmış hamurla hazırlanan nefis
+                                pide.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="pide" data-item='{
+                        "title": "Kaşarlı Pide",
+                        "price": "230₺",
+                        "desc": "İnce pide hamuru üzerine bol kaşar peyniri serilerek fırında pişirilir.",
+                        "img": "./assets/images/yemekler/kasarlı-pide.jpg",
+                        "ingredients": ["Pide hamuru", "Kaşar peyniri", "Yumurta", "Tereyağı"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/kasarlı-pide.jpg" alt="Kıymalı Pide">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Kaşarlı Pide</h3>
+                                <span class="menu-item-price">230₺</span>
+                            </div>
+                            <p class="menu-item-desc">Bol kaşarlı ve incecik hamuruyla hazırlanan pidemiz, fırından
+                                sıcak çıkıyor. Üzerindeki erimiş peynir ve tereyağı lezzetine hayran kalacaksınız.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="pide" data-item='{
+                        "title": "Kuşbaşılı Pide",
+                        "price": "230₺",
+                        "desc": "Kuşbaşı etli özel pide, geleneksel fırında pişirilir.",
+                        "img": "./assets/images/yemekler/kusbasili-pide.jpeg",
+                        "ingredients": ["Pide hamuru", "Kuşbaşı et", "Soğan", "Biber", "Domates", "Baharatlar"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/kusbasili-pide.jpeg" alt="Kıymalı Pide">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Kuşbaşılı Pide</h3>
+                                <span class="menu-item-price">230₺</span>
+                            </div>
+                            <p class="menu-item-desc">Özenle hazırlanmış kuşbaşı etler, ince pide hamuru üzerinde
+                                fırınlanıyor. Yanında turşu ve yeşillikle servis edilir.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="pide" data-item='{
+                        "title": "Kavurmalı Pide",
+                        "price": "350₺",
+                        "desc": "Uzun saatler pişirilerek hazırlanan kuzu kavurma, incecik açılmış pide hamuru üzerinde fırınlanıyor. Geleneksel lezzet sevenler için özel olarak hazırlanmıştır.",
+                        "img": "./assets/images/yemekler/kavurmalı-pide.jpg",
+                        "ingredients": ["Pide hamuru", "Kuzu kavurma", "Soğan", "Biber", "Domates", "Tereyağı", "Baharatlar"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/kavurmalı-pide.jpg" alt="Kıymalı Pide">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Kavurmalı Pide</h3>
+                                <span class="menu-item-price">350₺</span>
+                            </div>
+                            <p class="menu-item-desc">Geleneksel usullerle hazırlanan kavurma ile yapılan özel pide.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="pide" data-item='{
+                        "title": "Sucuklu Pide",
+                        "price": "200₺",
+                        "desc": "Özel sucuk ile hazırlanan, fırında pişirilen geleneksel pide.",
+                        "img": "./assets/images/yemekler/sucuklu-pide.jpg",
+                        "ingredients": ["Pide hamuru", "Sucuk", "Kaşar peyniri", "Yumurta", "Tereyağı", "Pul biber"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/sucuklu-pide.jpg" alt="Sucuklu Pide">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Sucuklu Pide</h3>
+                                <span class="menu-item-price">200₺</span>
+                            </div>
+                            <p class="menu-item-desc">Kaliteli sucuk ve erimiş kaşar peyniriyle hazırlanan pidemiz,
+                                fırından sıcak çıkıyor. Üzerindeki çıtır sucuk dilimleri ve tereyağı ile unutulmaz bir
+                                lezzet sunuyor.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="pide" data-item='{
+                        "title": "Karışık Pide",
+                        "price": "250₺",
+                        "desc": "Kıyma, sucuk, kaşar peyniri ve taze sebzelerle hazırlanan zengin içerikli pidemiz, doyurucu bir lezzet sunuyor. Tüm pide çeşitlerimizin en beğenilen karışımı!",
+                        "img": "./assets/images/yemekler/karisik-pide.jpeg",
+                        "ingredients": ["Kıyma", "Hamur", "Soğan", "Domates", "Biber", "Baharatlar"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/karisik-pide.jpeg" alt="Karışık Pide">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Karışık Pide</h3>
+                                <span class="menu-item-price">250₺</span>
+                            </div>
+                            <p class="menu-item-desc">Çeşitli malzemelerle zenginleştirilmiş özel karışık pide.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="pide" data-item='{
+                        "title": " Özel Pide",
+                        "price": "400₺",
+                        "desc": "Kuşbaşı et, kavurma, sucuk ve kaşar peyniriyle hazırlanan özel pide. Restoranımızın imza lezzetlerinden biri olan bu pide, özel karışım baharatlarla zenginleştirilir.",
+                        "img": "./assets/images/yemekler/-pide.jpeg",
+                        "ingredients": ["Kuşbaşı et", "Kavurma", "Sucuk", "Kaşar peyniri", "Hamur", "Tereyağ"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/-pide.jpeg" alt=" Pide">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title"> Özel Pide</h3>
+                                <span class="menu-item-price">400₺</span>
+                            </div>
+                            <p class="menu-item-desc">Kuşbaşı et, kavurma, sucuk ve kaşar peyniriyle hazırlanan özel
+                                pide.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="pide" data-item='{
+                        "title": "Lahmacun",
+                        "price": "80₺",
+                        "desc": "İncecik açılmış hamur üzerine özel baharatlı kıyma karışımıyla hazırlanır. Geleneksel yöntemlerle hazırlanan lahmacunlarımız taş fırında pişirilir.",
+                        "img": "./assets/images/yemekler/lahmacun.jpeg",
+                        "ingredients": ["Kıyma", "Hamur", "Maydanoz", "Domates", "Biber", "Sarımsak"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/lahmacun.jpeg" alt="Lahmacun">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Lahmacun</h3>
+                                <span class="menu-item-price">80₺</span>
+                            </div>
+                            <p class="menu-item-desc">İncecik açılmış hamur üzerine özel baharatlı kıyma karışımıyla
+                                hazırlanır.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="pide" data-item='{
+                        "title": "Cantık",
+                        "price": "80₺",
+                        "desc": "Bursaya özgü, pide hamurundan yapılan içli köfte benzeri lezzet.",
+                        "img": "./assets/images/yemekler/cantik.jpeg",
+                        "ingredients": ["Pide hamuru", "Kıyma", "Soğan", "Domates", "Biber", "Baharatlar", "Tereyağı"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/cantik.jpeg" alt="Kıymalı Pide">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Cantık</h3>
+                                <span class="menu-item-price">80₺</span>
+                            </div>
+                            <p class="menu-item-desc">Bursa'nın meşhur cantığı, özel kıymalı harcı ve yumuşacık
+                                hamuruyla hazırlanır. Yanında yoğurt ile servis edilir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- şiş Section -->
+            <div class="menu-section" id="sis">
+                <h2 class="section-title">Şişler</h2>
+                <div class="menu-grid">
+                    <div class="menu-item" data-category="sis" data-item='{
+                        "title": "Tavuk Şiş",
+                        "price": "250₺",
+                        "desc": "Tavuk göğüs etinin marine edilerek şişte pişirilmesiyle hazırlanır.",
+                        "img": "./assets/images/yemekler/tavuk-sis.jpg",
+                        "ingredients": ["Tavuk göğüs", "Zeytinyağı", "Yoğurt", "Sarımsak", "Kekik", "Tuz", "Karabiber"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/tavuk-sis.jpg" alt="Tavuk Şiş">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Tavuk Şiş</h3>
+                                <span class="menu-item-price">250₺</span>
+                            </div>
+                            <p class="menu-item-desc">Özel baharatlarla marine edilmiş tavuk şiş, kömür ateşinde
+                                mükemmel şekilde pişirilir. Yanında pirinç pilavı ve mezelerle servis edilir.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="sis" data-item='{
+                        "title": "Kanat Şiş",
+                        "price": "270₺",
+                        "desc": "Baharatlı marine edilmiş tavuk kanatları, ızgara veya fırında pişirilir.",
+                        "img": "./assets/images/yemekler/kanat-sis.jpg",
+                        "ingredients": ["Tavuk kanat", "Zeytinyağı", "Sarımsak", "Pul biber", "Kekik", "Tuz", "Karabiber"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/kanat-sis.jpg" alt="Kanat Şiş">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Kanat Şiş</h3>
+                                <span class="menu-item-price">270₺</span>
+                            </div>
+                            <p class="menu-item-desc">Özel baharat karışımıyla marine edilmiş tavuk kanatları, çıtır
+                                çıtır pişirilir. Yanında sarımsaklı sos ve mezelerle sunulur.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="sis" data-item='{
+                        "title": "Dana Şiş",
+                        "price": "350₺",
+                        "desc": "Dana etinin şişte pişirilerek servis edilen çeşidi.",
+                        "img": "./assets/images/yemekler/dana-sis.jpg",
+                        "ingredients": ["Dana eti", "Soğan", "Biber", "Domates", "Zeytinyağı", "Tuz", "Karabiber"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/dana-sis.jpg" alt="Dana Şiş">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Dana Şiş</h3>
+                                <span class="menu-item-price">350₺</span>
+                            </div>
+                            <p class="menu-item-desc">Özenle seçilmiş dana eti, sebzelerle birlikte şişte mükemmel
+                                şekilde pişirilir. Yanında bulgur pilavı ve ayranla servis edilir.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="sis" data-item='{
+                        "title": "Kuzu Şiş",
+                        "price": "370₺",
+                        "desc": "Taze kuzu eti, özel baharatlarla marine edilerek şişte mükemmel şekilde pişirilir. Yanında patates püresi ve şehriye çorbasıyla servis edilir.",
+                        "img": "./assets/images/yemekler/kuzu-sis.jpg",
+                        "ingredients": ["Kuzu eti", "Soğan", "Biber", "Domates", "Zeytinyağı", "Tuz", "Karabiber", "Kekik"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/kuzu-sis.jpg" alt="Kuzu Şiş">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Kuzu Şiş</h3>
+                                <span class="menu-item-price">370₺</span>
+                            </div>
+                            <p class="menu-item-desc">Kuzu etinin şişte pişirilerek servis edilen çeşidi.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="sis" data-item='{
+                        "title": "Ciğer Şiş",
+                        "price": "350₺",
+                        "desc": "Kuzu ciğerinin şişte pişirilerek servis edilen çeşidi.",
+                        "img": "./assets/images/yemekler/ciger-sis.jpg",
+                        "ingredients": ["Kuzu ciğeri", "Soğan", "Biber", "Domates", "Zeytinyağı", "Tuz", "Karabiber", "Kekik", "Sumak"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/ciger-sis.jpg" alt="Ciğer Şiş">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Ciğer Şiş</h3>
+                                <span class="menu-item-price">350₺</span>
+                            </div>
+                            <p class="menu-item-desc">Taze kuzu ciğeri, sumak ve kekikle marine edilerek şişte
+                                pişirilir. Yanında közlenmiş biber ve soğanla servis edilir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Köfte Section -->
+            <div class="menu-section" id="izgara">
+                <h2 class="section-title">Izgaralar</h2>
+                <div class="menu-grid">
+                    <div class="menu-item" data-category="izgara" data-item='{
+                        "title": "Karışık Izgara",
+                        "price": "500₺",
+                        "desc": "Çeşitli ızgara etlerin bir arada sunulduğu özel menü.",
+                        "img": "./assets/images/yemekler/karisik-izgara.png",
+                        "ingredients": [ "Dana şiş",  "Kuzu şiş", "Tavuk şiş",  "Ciğer şiş", "Köfte",   "Biber", "Domates", "Soğan", "Izgara sebzeler"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/karisik-izgara.png" alt="İnegöl Köfte">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Karışık Izgara</h3>
+                                <span class="menu-item-price">500₺</span>
+                            </div>
+                            <p class="menu-item-desc">En lezzetli ızgaralarımızın bir arada sunulduğu özel menü. Dana,
+                                kuzu, tavuk, ciğer şiş ve köftemizle hazırlanan bu zengin menü 2-3 kişilik servis
+                                edilir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- corba Section -->
+            <div class="menu-section" id="corba">
+                <h2 class="section-title">Çorbalar</h2>
+                <div class="menu-grid">
+                    <div class="menu-item" data-category="corba" data-item='{
+                        "title": "Ezogelin",
+                        "price": "80₺",
+                        "desc": "Geleneksel ezogelin çorbası, mercimek ve bulgurla hazırlanır.",
+                        "img": "./assets/images/yemekler/ezogelin-corbasi.jpeg",
+                        "ingredients": ["Kırmızı mercimek", "Bulgur", "Soğan", "Domates salçası", "Nane", "Kuru soğan", "Tereyağı"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/ezogelin-corbasi.jpeg" alt="Ezogelin">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Ezogelin</h3>
+                                <span class="menu-item-price">80₺</span>
+                            </div>
+                            <p class="menu-item-desc">Türk mutfağının klasikleşmiş çorbası, özel baharatlarla
+                                zenginleştirilerek hazırlanır. Üzerine gezdirilen tereyağı ve nane ile servis edilir.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="corba" data-item='{
+                        "title": "Mercimek",
+                        "price": "80₺",
+                        "desc": "Protein deposu kırmızı mercimek, taze sebzelerle birlikte pişirilir. Üzerine kızdırılmış tereyağı ve kırmızı biber eklenir.",
+                        "img": "./assets/images/yemekler/mercimek-corbasi.jpeg",
+                        "ingredients": ["Kırmızı mercimek", "Soğan", "Havuç", "Patates", "Tereyağı", "Kırmızı biber", "Tuz"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/mercimek-corbasi.jpeg" alt="Kıymalı Pide">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Mercimek</h3>
+                                <span class="menu-item-price">80₺</span>
+                            </div>
+                            <p class="menu-item-desc">Kırmızı mercimek ile yapılan besleyici çorba.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="corba" data-item='{
+                        "title": "İşkembe",
+                        "price": "130₺",
+                        "desc": "Uzun saatler pişirilerek hazırlanan işkembe çorbamız, bol sarımsaklı sos ve limon eşliğinde sunulur.",
+                        "img": "./assets/images/yemekler/iskembe.jpeg",
+                        "ingredients": ["İşkembe", "Sarımsak", "Yoğurt", "Tereyağı", "Kırmızı biber", "Tuz", "Limon"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/iskembe.jpeg" alt="Kıymalı Pide">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">İşkembe</h3>
+                                <span class="menu-item-price">130₺</span>
+                            </div>
+                            <p class="menu-item-desc">Geleneksel işkembe çorbası, sarımsaklı sosla servis edilir.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="corba" data-item='{
+                        "title": "Kelle Paça",
+                        "price": "130₺",
+                        "desc": "Uzun süre kaynatılarak hazırlanan kelle paça çorbamız, sarımsak ve sirke ile servis edilir.",
+                        "img": "./assets/images/yemekler/kelle-paca.jpeg",
+                        "ingredients": ["Kelle", "Paça", "Sarımsak", "Sirke", "Tuz", "Karabiber", "Kırmızı biber"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/kelle-paca.jpeg" alt="Kıymalı Pide">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Kelle Paça</h3>
+                                <span class="menu-item-price">130₺</span>
+                            </div>
+                            <p class="menu-item-desc">Besleyici kelle paça çorbası, geleneksel usullerle hazırlanır.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="corba" data-item='{
+                        "title": "Tavuk Suyu",
+                        "price": "100₺",
+                        "desc": "Tavuk suyu ve şehriyeli hafif çorba.",
+                        "img": "./assets/images/yemekler/tavuksuyu.jpeg",
+                        "ingredients": ["Tavuk suyu", "Şehriye", "Havuç", "Kereviz", "Maydanoz", "Tuz", "Karabiber"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/tavuksuyu.jpeg" alt="Kıymalı Pide">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Tavuk Suyu</h3>
+                                <span class="menu-item-price">100₺</span>
+                            </div>
+                            <p class="menu-item-desc">Tavuk kemiklerinin uzun süre kaynatılmasıyla elde edilen besleyici
+                                suyu sebzelerle zenginleştirilir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- tatlı Section -->
+            <div class="menu-section" id="tatli">
+                <h2 class="section-title">Tatlılar</h2>
+                <div class="menu-grid">
+                    <div class="menu-item" data-category="tatli" data-item='{
+                        "title": "Kadayıf Dolma",
+                        "price": "100₺",
+                        "desc": "İncecik tel kadayıfın içine bol antep fıstığı ve ceviz konularak hazırlanan bu özel tatlı, üzerine dökülen şerbetle mükemmel bir lezzet sunuyor.",
+                        "img": "./assets/images/yemekler/kadayif-dolmasi.jpeg",
+                        "ingredients": ["Tel kadayıf", "Ceviz", "Şerbet", "Tereyağı", "Toz şeker"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/kadayif-dolmasi.jpeg" alt="İnegöl Köfte">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Kadayıf Dolma</h3>
+                                <span class="menu-item-price">100₺</span>
+                            </div>
+                            <p class="menu-item-desc">Tel kadayıf içine ceviz konularak hazırlanan geleneksel tatlı.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-category="tatli" data-item='{
+                        "title": "Fırın Sütlaç",
+                        "price": "100₺",
+                        "desc": "Pirinç ve sütle yapılan geleneksel tatlı, fırında kızartılarak servis edilir.",
+                        "img": "./assets/images/yemekler/sutlac.jpeg",
+                        "ingredients": ["Süt", "Pirinç", "Şeker", "Nişasta", "Vanilya", "Tarçın"]
+                    }'>
+                        <div class="menu-item-img">
+                            <img src="./assets/images/yemekler/sutlac.jpeg" alt="İnegöl Köfte">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Fırın Sütlaç</h3>
+                                <span class="menu-item-price">100₺</span>
+                            </div>
+                            <p class="menu-item-desc">Tam yağlı süt ve pirinçle hazırlanan sütlacımız, fırında üzeri
+                                kızartılarak servis edilir. Üzerine serpiştirilen tarçınla birlikte sunulur.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal Structure -->
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-img" id="modal-img"></div>
+            <div class="modal-details">
+                <button class="modal-close">&times;</button>
+                <h2 class="modal-title" id="modal-title"></h2>
+                <span class="modal-price" id="modal-price"></span>
+                <p class="modal-desc" id="modal-desc"></p>
+
+                <div class="modal-ingredients">
+                    <h4>Malzemeler</h4>
+                    <div class="ingredients-list" id="ingredients-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Dosyaları -->
+    <script src="./assets/js/script.js"></script>
+
+    <!-- Menu Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Category Filter
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const menuItems = document.querySelectorAll('.menu-item');
+
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const category = this.dataset.category;
+
+                    // Filter menu items
+                    menuItems.forEach(item => {
+                        if (category === 'all' || item.dataset.category === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+
+                    // Show relevant sections
+                    const sections = document.querySelectorAll('.menu-section');
+                    sections.forEach(section => {
+                        if (category === 'all' || section.id === category) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Modal Functionality
+            const modal = document.querySelector('.modal-overlay');
+            const modalClose = document.querySelector('.modal-close');
+            const modalTitle = document.getElementById('modal-title');
+            const modalPrice = document.getElementById('modal-price');
+            const modalDesc = document.getElementById('modal-desc');
+            const modalImg = document.getElementById('modal-img');
+            const ingredientsList = document.getElementById('ingredients-list');
+
+            // Open modal when menu item is clicked
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.addEventListener('click', function () {
+                    const itemData = JSON.parse(this.getAttribute('data-item'));
+
+                    modalTitle.textContent = itemData.title;
+                    modalPrice.textContent = itemData.price;
+                    modalDesc.textContent = itemData.desc;
+                    modalImg.style.backgroundImage = `url(${itemData.img})`;
+
+                    // Clear previous ingredients
+                    ingredientsList.innerHTML = '';
+
+                    // Add new ingredients
+                    itemData.ingredients.forEach(ingredient => {
+                        const tag = document.createElement('span');
+                        tag.className = 'ingredient-tag';
+                        tag.textContent = ingredient;
+                        ingredientsList.appendChild(tag);
+                    });
+
+                    // Show modal
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // Close modal
+            modalClose.addEventListener('click', function () {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close modal when clicking outside
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Close modal with ESC key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+<!-- FOOTER -->
+  <footer class="footer">
+    <style>
+      .footer {
+        background-color: #0f0f0f;
+        color: #fff;
+        padding: 50px 0 20px;
+        font-size: 13px;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .footer-logo {
+        margin-bottom: 20px;
+      }
+
+      .footer-logo img {
+        width: 160px;
+        height: auto;
+        filter: brightness(0) invert(1);
+      }
+
+      .footer-title {
+        color: #cea63ac2;
+        font-size: 15px;
+        margin-bottom: 20px;
+        font-weight: 500;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 12px;
+      }
+
+      .footer-links a {
+        color: #ddd;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #c9a74d;
+        padding-left: 5px;
+      }
+
+      .social-media {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+        background-color: #c9a74d;
+        transform: translateY(-3px);
+      }
+
+      .social-icon img {
+        width: 20px;
+        height: 20px;
+        filter: brightness(0) invert(1);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #333;
+        padding-top: 20px;
+        text-align: center;
+        color: #999;
+        font-size: 13px;
+      }
+
+      @media (max-width: 768px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <img src="./assets/images/-logo.png" alt="">
+          </div>
+          <p style="color: #999; line-height: 1.6;">1991'den beri.</p>
+          <div class="social-media">
+            <a href="https://www.yemeksepeti.com/restaurant/m3am/-cag-kebap" class="social-icon" target="_blank">
+              <img src="assets/images/yemeksepeti.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/cagkebap/" class="social-icon" target="_blank">
+              <img src="assets/images/instagram (1).png" alt="Instagram">
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">Hızlı Linkler</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Anasayfa</a></li>
+            <li><a href="about.html">Hakkımızda</a></li>
+            <li><a href="menu.html">Menü</a></li>
+            <li><a href="reservation.html">Rezervasyon</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">İletişim</h3>
+          <ul class="footer-links">
+            <li><a href="tel:+905555555555">0555555555</a></li>
+            <li><a href="mailto:info@.com">info@text.com</a></li>
+            <li>Deneme adresi</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">Çalışma Saatleri</h3>
+          <ul class="footer-links">
+            <li>Pazartesi - Cuma<br>10:00 - 23:00</li>
+            <li>Cumartesi - Pazar<br>11:00 - 00:00</li>
+          </ul>
+        </div>
+      </div>
+
+
+
+      <div class="footer-bottom">
+        <p>© 2025. Tüm hakları saklıdır. </p>
+      </div>
+    </div>
+  </footer>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="speech.js"></script>
+</body>
+
+</html>
