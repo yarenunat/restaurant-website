@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anasayfa | </title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=DM+Sans:wght@400;700&family=Forum&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/images/1991.png" type="image/x-icon">
+    <!-- Preload Image -->
+    <link rel="preload" as="image" href="./assets/images/hero-slider-1.jpg">
+
+</head>
+
+<body id="top">
+
+    <!-- Header -->
+    <header class="header" data-header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="./assets/images/-logo.png" width="260" height="50" alt=" - Anasayfa">
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <button class="close-btn custom-close" aria-label="close menu" data-nav-toggler>
+                    <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+                </button>
+
+                <a href="index.html" class="logo">
+                    <img src="./assets/images/-logo.png" width="160" height="50" alt=" - Anasayfa">
+                </a>
+
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a href="about.html" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Hakkımızda</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="menu.html" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Menü</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="index.html" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Anasayfa</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="reservation.html" class="navbar-link hover-underline active">
+                            <div class="separator"></div>
+                            <span class="span">Rezervasyon</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="contact.html" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">İLETİŞİM</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <a href="kesfet.html" class="btn btn-secondary">
+                <span class="text text-1">Keşfet</span>
+                <span class="text text-2" aria-hidden="true">Tıkla</span>
+            </a>
+
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+                <span class="line line-3"></span>
+            </button>
+
+            <div class="overlay" data-nav-toggler data-overlay></div>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main>
+
+        <style>
+            :root {
+                --arkaplan: #121212;
+                --kart-arkaplan: #1e1e1e;
+                --beyaz: #ffffff;
+                --acik-gri: #e0e0e0;
+                --altin: hsl(38, 61%, 73%);
+                --altin-koyu: hsl(38, 50%, 60%);
+                --kirmizi: #ff5252;
+                --yesil: #4caf50;
+                --kenar-radius: 12px;
+                --golge: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: hsla(210, 4%, 11%, 1);
+                ;
+                color: var(--acik-gri);
+                line-height: 1.6;
+                padding-top: 120px;
+                /* Header yüksekliği için */
+                overflow: scroll;
+            }
+
+            .container {
+                width: 100%;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            @media (max-width: 768px) {
+                .container {
+                    margin-top: 50px;
+                    /* Mobil cihazlar için daha dar boşluk */
+                }
+            }
+
+            .rezervasyon-karti {
+                background-color: var(--kart-arkaplan);
+                padding: 2rem;
+                border-radius: var(--kenar-radius);
+                box-shadow: var(--golge);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                text-align: center;
+                color: var(--altin);
+                margin-bottom: 2rem;
+                font-weight: 500;
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                color: var(--altin);
+                margin: 5rem 0 1.5rem;
+                font-weight: 500;
+                font-size: 2.2rem;
+                text-align: center;
+            }
+
+            .form-grubu {
+                margin-bottom: 1.8rem;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 0.8rem;
+                color: var(--altin);
+                font-weight: 500;
+                font-size: 1.5rem;
+            }
+
+            input {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1.5rem;
+                background-color: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: var(--kenar-radius);
+                color: var(--beyaz);
+                transition: all 0.3s ease;
+            }
+
+            input:focus {
+                outline: none;
+                border-color: var(--altin);
+                box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.2);
+            }
+
+            #rezervasyonlar {
+                margin-top: 2rem;
+            }
+
+            /* REZERVASYON FORM BUTONLARI (Sadece bu kısma özel) */
+            #reservationForm button[type="submit"],
+            #searchForm button[type="submit"] {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1.5rem;
+                background-color: var(--altin);
+                color: var(--arkaplan);
+                border: none;
+                border-radius: var(--kenar-radius);
+                cursor: pointer;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                margin-top: 2rem;
+            }
+
+            #reservationForm button[type="submit"]:hover,
+            #searchForm button[type="submit"]:hover {
+                background-color: var(--altin-koyu);
+                transform: translateY(-2px);
+            }
+
+            /* REZERVASYON LİSTE BUTONLARI (İptal butonları) */
+            .rezervasyon-item button {
+                width: auto;
+                padding: 0.6rem 1rem;
+                background-color: var(--kirmizi);
+                color: var(--beyaz);
+                margin-left: 1rem;
+                font-size: 0.9rem;
+                border: none;
+                border-radius: var(--kenar-radius);
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .rezervasyon-item button:hover {
+                background-color: #e53935;
+                /* Daha koyu kırmızı */
+            }
+
+            @media (max-width: 768px) {
+                body {
+                    padding-top: 100px;
+                }
+
+                .container {
+                    padding: 15px;
+                }
+
+                .rezervasyon-karti {
+                    padding: 1.5rem;
+                }
+
+                h1 {
+                    font-size: 1.8rem;
+                }
+
+                h2 {
+                    font-size: 1.5rem;
+                }
+            }
+
+
+
+            .rezervasyon-item .button {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1.5rem;
+                background-color: var(--altin);
+                color: var(--arkaplan);
+                border: none;
+                border-radius: var(--kenar-radius);
+                cursor: pointer;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                margin-top: 2rem;
+            }
+
+            .rezervasyon-item .button:hover {
+                background-color: var(--gold-crayola);
+                transform: translateY(-2px);
+            }
+
+            #rezervasyonlar {
+                margin-top: 2rem;
+            }
+        </style>
+        <div class="container">
+            <h1>Restoran Rezervasyonu</h1>
+            <form id="reservationForm">
+                <label for="name">Ad Soyad:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="people_count">Kişi Sayısı:</label>
+                <input type="number" id="people_count" name="people_count" required>
+
+                <label for="date">Tarih:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Saat:</label>
+                <input type="time" id="time" name="time" required>
+
+                <button type="submit" class="reservation-btn">Rezervasyon Yap</button>
+            </form>
+            <style>
+                input[type="date"],
+                input[type="time"] {
+                    color-scheme: dark;
+                    /* ikonları ve vektörleri beyaz yapar (koyu mod gibi davranır) */
+
+                    color: #fff;
+                    /* yazı rengi beyaz */
+                }
+            </style>
+
+            <h2>Rezervasyonlarınızı Görüntüleyin ve İptal Edin</h2>
+            <form id="searchForm">
+                <label for="searchName">Ad Soyad:</label>
+                <input type="text" id="searchName" name="searchName" required>
+                <button type="submit" class="reservation-btn">Rezervasyonları Göster</button>
+            </form>
+
+            <div id="reservationsList"></div>
+            <div id="message"></div>
+        </div>
+
+    </main>
+    <!-- FOOTER -->
+    <div class="footer">
+        <style>
+            .footer {
+                margin-top: 70px;
+                background-color: hsla(210, 4%, 11%, 1);
+                color: #fff;
+                padding: 50px 0 20px;
+                font-size: 13px;
+            }
+
+            .footer-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .footer-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+
+            .footer-logo {
+                margin-bottom: 20px;
+            }
+
+            .footer-logo img {
+                width: 160px;
+                height: auto;
+                filter: brightness(0) invert(1);
+            }
+
+            .footer-title {
+                color: #cea63ac2;
+                font-size: 15px;
+                margin-bottom: 20px;
+                font-weight: 500;
+            }
+
+            .footer-links {
+                list-style: none;
+                padding: 0;
+            }
+
+            .footer-links li {
+                margin-bottom: 12px;
+            }
+
+            .footer-links a {
+                color: #ddd;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            .footer-links a:hover {
+                color: #c9a74d;
+                padding-left: 5px;
+            }
+
+            .social-media {
+                display: flex;
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #333;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+            }
+
+            .social-icon:hover {
+                background-color: #c9a74d;
+                transform: translateY(-3px);
+            }
+
+            .social-icon img {
+                width: 20px;
+                height: 20px;
+                filter: brightness(0) invert(1);
+            }
+
+            .footer-bottom {
+                border-top: 1px solid #333;
+                padding-top: 20px;
+                text-align: center;
+                color: #999;
+                font-size: 13px;
+            }
+
+            @media (max-width: 768px) {
+                .footer-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="./assets/images/-logo.png" alt="">
+                    </div>
+                    <p style="color: #999; line-height: 1.6;">1991'den beri
+                        hizmetinizdeyiz.</p>
+                    <div class="social-media">
+                        <a href="https://www.yemeksepeti.com/restaurant/m3am/-cag-kebap" class="social-icon"
+                            target="_blank">
+                            <img src="deneme/yemeksepeti.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/cagkebap/" class="social-icon" target="_blank">
+                            <img src="deneme/instagram (1).png" alt="Instagram">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Hızlı Linkler</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Anasayfa</a></li>
+                        <li><a href="about.html">Hakkımızda</a></li>
+                        <li><a href="menu.html">Menü</a></li>
+                        <li><a href="reservation.html">Rezervasyon</a></li>
+                        <li><a href="contact.html">İletişim</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">İletişim</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+905555555555">0505 394 82 25</a></li>
+                        <li><a href="mailto:info@.com">info@.com</a></li>
+                        <li>deneme adresi</li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Çalışma Saatleri</h3>
+                    <ul class="footer-links">
+                        <li>Pazartesi - Cuma<br>10:00 - 23:00</li>
+                        <li>Cumartesi - Pazar<br>11:00 - 00:00</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="footer-bottom">
+                <p>© 2025 . Tüm hakları saklıdır. </p>
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript Dosyaları -->
+    <script src="./script.js"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
+
